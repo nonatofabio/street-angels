@@ -124,3 +124,4 @@ body.flyer { background: #fff; }
 .flyer-foot { font-family: var(--head); text-transform: uppercase; letter-spacing: .08em; font-size: .9rem; }
 .noprint { text-align: center; }
 @media print { .noprint { display: none; } .flyer-sheet { border-width: 6px; margin: 0; } }
+@media (max-width: 600px) { .flyer-sheet { padding: .6in .4in; margin: .5rem; } .flyer-sheet h1 { font-size: 2.2rem; } .flyer-when { font-size: 1.5rem; } }
