@@ -1,0 +1,34 @@
+# Recurring club events. The site generates the next dates from these rules.
+# rule: "monthly:1:sun" = first Sunday of each month; "weekly:mon" = every Monday
+- slug: hot-rods-and-coffee
+  title: Street Angels Hot Rods & Coffee
+  rule: monthly:1:sun
+  start: "08:00"
+  end: "10:00"
+  location: Montecito Shopping Center
+  address: 560 Montecito Center, Santa Rosa, CA 95409
+  blurb: The club's monthly Sunday-morning gathering. Bring the car, grab a coffee, talk hot rods. Open to all.
+  confirm: false
+  photo: 243374993_10227832891632299_8990588031352247940_n.jpg
+- slug: monday-lunch
+  title: Monday Hot Rodders' Lunch at Carr's
+  rule: weekly:mon
+  start: "11:30"
+  end: "13:30"
+  location: Carr's Drive-In
+  address: 6533 Covey Rd, Forestville, CA 95436
+  blurb: The lunch the Street Angels started. Every Monday, rain or shine. Drive what you've got.
+  confirm: true
+  confirm_note: lunch time is a guess
+  photo: buns-and-burgers.jpg
+- slug: monthly-meeting
+  title: Monthly Club Meeting
+  rule: monthly:2:wed
+  start: "18:30"
+  end: "20:00"
+  location: Members only
+  address: ""
+  blurb: Club business, upcoming shows, new members.
+  confirm: true
+  confirm_note: day, time and place to be filled in by the club
+  members_only: true

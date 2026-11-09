@@ -1,0 +1,70 @@
+{% extends "base.html" %}{% block body %}
+<section class="hero">
+  <img class="hero-img" src="{{ base }}assets/img/l/243374993_10227832891632299_8990588031352247940_n.jpg" alt="Street Angels hot rods lined up at Carr's">
+  <div class="hero-text">
+    <img class="hero-logo" src="{{ base }}assets/img/l/kikb85art.png" alt="Street Angels Santa Rosa">
+    <p class="lede">Santa Rosa's original hot rod club. Founded 1952 at Bings Speed Shop, builders of the first drag strip and the first car show in town, back on the road since 2015.</p>
+    <p class="hero-cta"><a class="btn" href="{{ base }}events/">Next event</a> <a class="btn ghost" href="{{ base }}cars/">See the cars</a></p>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2 class="sec">Coming up <small>next date for each gathering</small></h2>
+  <div class="ev-list">
+  {% for o in upcoming %}
+    <article class="ev-card{% if o.event.confirm %} confirm{% endif %}">
+      <div class="ev-date"><span class="dow">{{ o.date.strftime('%a') }}</span><span class="day">{{ o.date.strftime('%-d') }}</span><span class="mon">{{ o.date.strftime('%b') }}</span></div>
+      <div class="ev-body">
+        <h3>{{ o.event.title }}</h3>
+        <p>{{ o.event.start_fmt }}–{{ o.event.end_fmt }} · {{ o.event.location }}{% if o.event.confirm %} <span class="tag">confirm</span>{% endif %}</p>
+        <p class="ev-actions"><a href="{{ o.gcal }}" target="_blank" rel="noopener">Google Calendar</a> · <a href="{{ base }}{{ o.ics_path }}">Apple / Outlook</a>{% if o.event.address %} · <a href="{{ o.event.directions }}" target="_blank" rel="noopener">Directions</a>{% endif %}</p>
+      </div>
+    </article>
+  {% endfor %}
+  </div>
+  <p><a class="more" href="{{ base }}events/">All events →</a></p>
+</section>
+
+<section class="wrap">
+  <h2 class="sec">Latest photos <small>from Craig Owens' albums</small></h2>
+  <div class="album-grid">
+  {% for a in albums %}
+    <a class="album" href="{{ a.url }}" target="_blank" rel="noopener">
+      <img src="{{ a.cover }}" alt="" loading="lazy">
+      <span class="album-title">{{ a.title }}</span>
+      <span class="album-meta">{{ a.count }} photos{% if a.date_fmt %} · {{ a.date_fmt }}{% endif %}</span>
+    </a>
+  {% endfor %}
+  </div>
+  <p><a class="more" href="{{ base }}photos/">All albums →</a></p>
+</section>
+
+<section class="wrap">
+  <h2 class="sec">Member's cars <small>{{ car_count }} cars, {{ owner_count }} owners</small></h2>
+  <div class="car-grid">
+  {% for c in featured %}
+    <a class="car-card" href="{{ base }}cars/{{ c.slug }}/">
+      <img src="{{ base }}assets/img/s/{{ c.image }}" alt="{{ c.title }}" loading="lazy">
+      <span class="car-title">{{ c.title }}</span>
+      <span class="car-owner">{{ c.owner }}</span>
+    </a>
+  {% endfor %}
+  </div>
+  <p><a class="more" href="{{ base }}cars/">Browse all cars →</a></p>
+</section>
+
+<section class="wrap history-teaser">
+  <img src="{{ base }}assets/img/s/poster.jpg" alt="1956 drag races poster">
+  <div>
+    <h2 class="sec">Since 1952</h2>
+    <p>Six hot rodders met at Bings Speed Shop on Santa Rosa Avenue. Four years later the club opened the Santa Rosa drag strip to 2,400 spectators and put on the first car show the town had ever seen.</p>
+    <p><a class="more" href="{{ base }}history/">Read the history →</a></p>
+  </div>
+</section>
+
+<section class="wrap join-cta">
+  <h2 class="sec">Got a hot rod? Come find us.</h2>
+  <p>First Sunday of the month at Hot Rods &amp; Coffee, or any Monday at Carr's. No application needed to say hello.</p>
+  <p><a class="btn" href="{{ base }}join/">How to join</a></p>
+</section>
+{% endblock %}

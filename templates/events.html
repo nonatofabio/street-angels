@@ -1,0 +1,36 @@
+{% extends "base.html" %}{% block body %}
+<section class="wrap">
+  <h1>Events</h1>
+  <p class="lede">Where the Street Angels are this month. Add any date to your phone's calendar with one tap.</p>
+  <h2 class="sec">Regular gatherings</h2>
+  <div class="ev-regular">
+  {% for ev in events %}
+    <article class="ev-reg{% if ev.confirm %} confirm{% endif %}">
+      {% if ev.photo %}<img src="{{ base }}assets/img/s/{{ ev.photo }}" alt="" loading="lazy">{% endif %}
+      <div>
+        <h3>{{ ev.title }}</h3>
+        <p class="when">{% if ev.rule.startswith('weekly') %}Every {{ ev.next.date.strftime('%A') if ev.next else 'week' }}{% else %}{{ {'1':'First','2':'Second','3':'Third','4':'Fourth'}[ev.rule.split(':')[1]] }} {{ ev.next.date.strftime('%A') if ev.next else '' }} of the month{% endif %} · {{ ev.start_fmt }}–{{ ev.end_fmt }}</p>
+        <p class="where">{{ ev.location }}{% if ev.address %}, {{ ev.address }}{% endif %}{% if ev.confirm %} <span class="tag">confirm{% if ev.confirm_note %}: {{ ev.confirm_note }}{% endif %}</span>{% endif %}</p>
+        <p>{{ ev.blurb }}</p>
+        <p class="ev-actions">{% if ev.address %}<a class="btn small" href="{{ ev.directions }}" target="_blank" rel="noopener">Directions</a> {% endif %}{% if ev.next %}<a class="btn small ghost" href="{{ base }}events/{{ ev.slug }}/flyer/">Print flyer</a>{% endif %}</p>
+      </div>
+    </article>
+  {% endfor %}
+  </div>
+
+  <h2 class="sec">Next {{ upcoming|length }} dates</h2>
+  <div class="ev-list">
+  {% for o in upcoming %}
+    <article class="ev-card{% if o.event.confirm %} confirm{% endif %}">
+      <div class="ev-date"><span class="dow">{{ o.date.strftime('%a') }}</span><span class="day">{{ o.date.strftime('%-d') }}</span><span class="mon">{{ o.date.strftime('%b') }}</span></div>
+      <div class="ev-body">
+        <h3>{{ o.event.title }}</h3>
+        <p>{{ o.event.start_fmt }}–{{ o.event.end_fmt }} · {{ o.event.location }}</p>
+        <p class="ev-actions"><a href="{{ o.gcal }}" target="_blank" rel="noopener">Google Calendar</a> · <a href="{{ base }}{{ o.ics_path }}">Apple / Outlook</a>{% if o.event.address %} · <a href="{{ o.event.directions }}" target="_blank" rel="noopener">Directions</a>{% endif %}</p>
+      </div>
+    </article>
+  {% endfor %}
+  </div>
+  <p class="muted">Other shows the members go to show up in <a href="{{ base }}photos/">the photo albums</a> after the fact. A shared club calendar would list them ahead of time; that's the next step.</p>
+</section>
+{% endblock %}

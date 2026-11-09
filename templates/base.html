@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% if title %}{{ title }} · {% endif %}{{ site.name }}</title>
+<meta name="description" content="{{ site.tagline }}">
+<meta property="og:title" content="{% if title %}{{ title }} · {% endif %}{{ site.name }}">
+<meta property="og:description" content="{{ site.tagline }}">
+<meta property="og:image" content="{{ base }}assets/img/l/243374993_10227832891632299_8990588031352247940_n.jpg">
+<link rel="icon" href="{{ base }}assets/img/s/street-angels-patch-002.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ base }}static/site.css">
+</head>
+<body>
+<div class="demo-bar">{{ site.demo_notice }}</div>
+<header class="site-head">
+  <a class="brand" href="{{ base }}">
+    <img src="{{ base }}assets/img/s/street-angels-patch-002.png" alt="" width="56" height="40">
+    <span><strong>Santa Rosa Street Angels</strong><small>Hot rod &amp; custom car club · since 1952</small></span>
+  </a>
+  <button class="menu-btn" aria-label="Menu" onclick="document.body.classList.toggle('nav-open')">☰</button>
+  <nav class="site-nav">
+    {% for href, label in nav %}<a href="{{ base }}{{ href }}">{{ label }}</a>{% endfor %}
+    <a class="fb" href="{{ site.facebook }}" target="_blank" rel="noopener">Facebook group ↗</a>
+  </nav>
+</header>
+<main>
+{% block body %}{% endblock %}
+</main>
+<footer class="site-foot">
+  <p><strong>Santa Rosa Street Angels</strong> · est. 1952 · Santa Rosa, California</p>
+  <p><a href="{{ site.facebook }}">Facebook group</a> · <a href="{{ site.flickr }}">Craig's photo albums</a> · <a href="{{ site.kustomrama }}">Kustomrama history</a></p>
+  <p class="muted">Photos belong to the members who took them. © {{ year }} Santa Rosa Street Angels.</p>
+</footer>
+{% block scripts %}{% endblock %}
+</body>
+</html>

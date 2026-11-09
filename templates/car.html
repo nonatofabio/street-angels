@@ -1,0 +1,18 @@
+{% extends "base.html" %}{% block body %}
+<article class="wrap car-page">
+  <p class="crumbs"><a href="{{ base }}cars/">← All cars</a></p>
+  <h1>{{ car.title or car.owner }}</h1>
+  <p class="byline">{{ car.owner }}{% if car.tier %} · {{ car.tier }}{% endif %}</p>
+  <figure class="car-photo"><img src="{{ base }}assets/img/l/{{ car.image }}" alt="{{ car.title }}"></figure>
+  <div class="prose">{{ car.body_html|safe if car.body_html else '<p class="muted">No write-up yet. Owner, send us a few lines!</p>' }}</div>
+  {% if others %}
+  <h2 class="sec">More from {{ car.owner }}</h2>
+  <div class="car-grid small">
+  {% for c in others %}
+    <a class="car-card" href="{{ base }}cars/{{ c.slug }}/"><img src="{{ base }}assets/img/s/{{ c.image }}" alt="" loading="lazy"><span class="car-title">{{ c.title or '—' }}</span></a>
+  {% endfor %}
+  </div>
+  {% endif %}
+  <p class="muted small-note">Something wrong or missing? <a href="{{ base }}join/#add-your-car-to-the-site">Send a correction</a>.</p>
+</article>
+{% endblock %}

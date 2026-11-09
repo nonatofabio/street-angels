@@ -1,0 +1,7 @@
+{% extends "base.html" %}{% block body %}
+<article class="wrap prose-page">
+  <h1>{{ title }}</h1>
+  {% if subtitle %}<p class="byline">{{ subtitle }}</p>{% endif %}
+  <div class="prose">{{ body|safe }}</div>
+</article>
+{% endblock %}

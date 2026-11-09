@@ -1,0 +1,19 @@
+{% extends "base.html" %}{% block body %}
+<section class="wrap">
+  <h1>Photos</h1>
+  <p class="lede">Craig Owens shoots every gathering. These albums come straight from <a href="{{ site.flickr }}">his Flickr</a> and update on their own; tap one to see the whole set.</p>
+  <h2 class="sec">Club gatherings</h2>
+  <div class="album-grid">{% for a in albums if a.club %}
+    <a class="album" href="{{ a.url }}" target="_blank" rel="noopener">
+      <img src="{{ a.cover }}" alt="" loading="lazy"><span class="album-title">{{ a.title }}</span><span class="album-meta">{{ a.count }} photos{% if a.date_fmt %} · {{ a.date_fmt }}{% endif %}</span>
+      <span class="strip">{% for t in a.thumbs[1:4] %}<img src="{{ t }}" alt="" loading="lazy">{% endfor %}</span>
+    </a>{% endfor %}
+  </div>
+  <h2 class="sec">Shows and road trips</h2>
+  <div class="album-grid">{% for a in albums if not a.club %}
+    <a class="album" href="{{ a.url }}" target="_blank" rel="noopener">
+      <img src="{{ a.cover }}" alt="" loading="lazy"><span class="album-title">{{ a.title }}</span><span class="album-meta">{{ a.count }} photos{% if a.date_fmt %} · {{ a.date_fmt }}{% endif %}</span>
+    </a>{% endfor %}
+  </div>
+</section>
+{% endblock %}

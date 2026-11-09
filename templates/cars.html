@@ -1,0 +1,21 @@
+{% extends "base.html" %}{% block body %}
+<section class="wrap">
+  <h1>Member's Cars</h1>
+  <p class="lede">{{ cars|length }} cars from the garages of the Street Angels. Tap a car for the full story.</p>
+  <div class="filters">
+    <input id="q" type="search" placeholder="Search: Ford, flathead, Craig…" aria-label="Search cars">
+    <select id="owner" aria-label="Owner"><option value="">All owners</option>{% for o in owners %}<option value="{{ o }}">{{ o }}</option>{% endfor %}</select>
+    <div class="chips" id="decades"><button class="chip on" data-d="">All years</button>{% for d in decades %}<button class="chip" data-d="{{ d }}">{{ d }}</button>{% endfor %}</div>
+  </div>
+  <p class="muted" id="count"></p>
+  <div class="car-grid" id="grid">
+  {% for c in cars %}
+    <a class="car-card" href="{{ base }}cars/{{ c.slug }}/" data-owner="{{ c.owner }}" data-decade="{{ c.decade }}" data-text="{{ (c.owner ~ ' ' ~ c.title ~ ' ' ~ c.body_text)|lower }}">
+      <img src="{{ base }}assets/img/s/{{ c.image }}" alt="{{ c.title or c.owner }}" loading="lazy">
+      <span class="car-title">{{ c.title or '—' }}</span>
+      <span class="car-owner">{{ c.owner }}{% if c.tier %} · {{ c.tier }}{% endif %}</span>
+    </a>
+  {% endfor %}
+  </div>
+</section>
+{% endblock %}{% block scripts %}<script src="{{ base }}static/cars.js"></script>{% endblock %}

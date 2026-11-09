@@ -1,0 +1,16 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ ev.title }} flyer</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ base }}static/site.css"></head>
+<body class="flyer">
+<div class="flyer-sheet">
+  <img class="flyer-logo" src="{{ base }}assets/img/l/kikb85art.png" alt="Santa Rosa Street Angels">
+  <h1>{{ ev.title }}</h1>
+  <p class="flyer-when">{{ occ.label }}<br>{{ ev.start_fmt }} to {{ ev.end_fmt }}</p>
+  <p class="flyer-where">{{ ev.location }}{% if ev.address %}<br>{{ ev.address }}{% endif %}</p>
+  <p class="flyer-blurb">{{ ev.blurb }}</p>
+  {% if ev.photo %}<img class="flyer-photo" src="{{ base }}assets/img/l/{{ ev.photo }}" alt="">{% endif %}
+  <p class="flyer-foot">Santa Rosa Street Angels · since 1952 · santarosastreetangels.com</p>
+</div>
+<p class="noprint"><button onclick="window.print()" class="btn">Print</button> <a class="btn ghost" href="{{ base }}events/">Back</a></p>
+</body></html>
