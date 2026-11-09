@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{{ base }}static/site.css"></head>
 <body class="flyer">
 <div class="flyer-sheet">
-  <img class="flyer-logo" src="{{ base }}assets/img/l/kikb85art.png" alt="Santa Rosa Street Angels">
+  <div class="flyer-logo">{% include "_wordmark.html" %}</div>
   <h1>{{ ev.title }}</h1>
   <p class="flyer-when">{{ occ.label }}<br>{{ ev.start_fmt }} to {{ ev.end_fmt }}</p>
   <p class="flyer-where">{{ ev.location }}{% if ev.address %}<br>{{ ev.address }}{% endif %}</p>

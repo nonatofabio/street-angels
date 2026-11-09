@@ -1,0 +1,17 @@
+{# Typographic lockup. Set class "wordmark light" on dark backgrounds. #}
+<svg class="wordmark {{ variant|default('') }}" viewBox="0 0 640 230" role="img" aria-label="Santa Rosa Street Angels, est. 1952" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="halo" x1="0" x2="1"><stop offset="0" stop-color="#e8c65a"/><stop offset=".5" stop-color="#f6e49a"/><stop offset="1" stop-color="#c9a227"/></linearGradient>
+  </defs>
+  <!-- halo -->
+  <ellipse cx="320" cy="28" rx="92" ry="14" fill="none" stroke="url(#halo)" stroke-width="7"/>
+  <ellipse cx="320" cy="28" rx="92" ry="14" fill="none" stroke="#fff6cc" stroke-width="1.5" opacity=".6"/>
+  <!-- small line -->
+  <text x="320" y="78" text-anchor="middle" class="wm-small">SANTA ROSA</text>
+  <!-- big line -->
+  <text x="320" y="170" text-anchor="middle" class="wm-big">STREET ANGELS</text>
+  <!-- rule + tagline -->
+  <line x1="60" y1="196" x2="245" y2="196" class="wm-rule"/>
+  <text x="320" y="203" text-anchor="middle" class="wm-tag">EST. 1952</text>
+  <line x1="395" y1="196" x2="580" y2="196" class="wm-rule"/>
+</svg>
